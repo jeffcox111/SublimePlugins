@@ -6,5 +6,8 @@ class convertsqlCommand(sublime_plugin.TextCommand):
 		content = self.view.substr(region)
 		content = content.replace('!', '.')
 		content = content.replace('&', '+')
+		content = content.replace('"', '\'')
+		content = content.replace('[', '')
+		content = content.replace(']', '')
 		self.view.replace(edit, region, content)
 		

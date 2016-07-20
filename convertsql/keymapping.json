@@ -1,0 +1,3 @@
+[
+   { "keys": ["ctrl+s", "ctrl+q", "ctrl+l"], "command": "convertsql" }  
+]

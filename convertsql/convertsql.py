@@ -9,5 +9,7 @@ class convertsqlCommand(sublime_plugin.TextCommand):
 		content = content.replace('"', '\'')
 		content = content.replace('[', '')
 		content = content.replace(']', '')
+		content = content.replace('dbo_', 'dbo.')
+		content = content.replace('Trim(', 'rtrim(ltrim(')
 		self.view.replace(edit, region, content)
 		

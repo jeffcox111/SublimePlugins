@@ -13,10 +13,13 @@ class convertsqlCommand(sublime_plugin.TextCommand):
 		content = content.replace('dbo_', 'dbo.')
 
 		# Replace trim with rtrim + ltrim
-		content = re.sub('trim\(([^\)]*)\)', self.createTrim, content);
+		content = re.sub('\wtrim\(([^\)]*)\)', self.createTrim, content);
 
 		# Replace IIf with CASE WHEN
-		content = re.sub('iif\w*\(([^,]*),([^,]*),([^\)]*)\)', self.createCaseWhen)
+		content = re.sub('\wiif\w*\(([^,]*),([^,]*),([^\)]*)\)', self.createCaseWhen, content)
+
+		# Replace DATE() with GETDATE()
+		content = re.sub('\wDATE\w*\(\w*\)', 'GETDATE()', content)
 
 		self.view.replace(edit, region, content)
 
